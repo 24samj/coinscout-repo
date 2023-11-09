@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import CoinDetails from "./pages/CoinDetails/CoinDetails.jsx";
+import HomePage from "./pages/HomePage/HomePage.jsx";
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.css";
+import "./styles.css";
+import { useEffect, useState } from "react";
+import Navbar from "./components/Navbar/Navbar.jsx";
 
-function App() {
+export default function App() {
+  const [selectedCurrency, setSelectedCurrency] = useState("aed");
+  const [masterData, setMasterData] = useState(null);
+  const retrieveCoinData = async () => {
+    try {
+      const { data } = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/`
+      );
+      setMasterData(data);
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
+  useEffect(() => {
+    retrieveCoinData();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar
+        masterData={masterData}
+        selectedCurrency={selectedCurrency}
+        setSelectedCurrency={setSelectedCurrency}
+      />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              masterData={masterData}
+              selectedCurrency={selectedCurrency}
+              setSelectedCurrency={setSelectedCurrency}
+            />
+          }
+        />
+        <Route
+          path="/:coinId"
+          element={
+            <CoinDetails
+              selectedCurrency={selectedCurrency}
+              setSelectedCurrency={setSelectedCurrency}
+            />
+          }
+        />
+      </Routes>
     </div>
   );
 }
-
-export default App;

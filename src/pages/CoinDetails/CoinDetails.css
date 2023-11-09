@@ -1,0 +1,49 @@
+.coinData,
+.chartData {
+  height: calc(100vh - 40px);
+  background: rgb(20, 22, 25);
+}
+
+.coinData {
+  width: 30vw;
+  border-right: 1px solid grey;
+}
+
+.chartData {
+  width: calc(70vw - 40px);
+  margin: auto;
+}
+
+.coinName,
+.coinInfo,
+.coinRank,
+.coinPrice,
+.coinCap {
+  color: white;
+}
+
+.coinName {
+  font-weight: 900;
+  font-size: 32px;
+}
+
+.coinInfo {
+  text-align: left;
+}
+
+.chart-buttons {
+  gap: 1vw;
+}
+
+.time-button {
+  color: white;
+  background-color: rgb(20, 22, 25);
+  width: 16vw;
+  border: 1px solid orange;
+  border-radius: 5px;
+}
+
+.active-time-button {
+  color: black;
+  background-color: orange;
+}

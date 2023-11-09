@@ -1,0 +1,19 @@
+.header {
+  background-color: rgb(20, 22, 25);
+  height: 40px;
+  width: 100vw;
+  border-bottom: 1px solid grey;
+}
+
+.siteText {
+  color: orange;
+  font-weight: 900;
+  cursor: pointer;
+  margin-left: 20vw;
+}
+
+.currencySelect {
+  color: white;
+  background-color: rgb(20, 22, 25);
+  margin-right: 20vw;
+}

@@ -1,0 +1,72 @@
+* {
+    background-color: rgb(20, 22, 25);
+}
+
+.intro,
+.coinTableContainer,
+.symbol,
+.name {
+    color: white;
+}
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
+.coinTable td,
+.coinTable th {
+    padding: 20px 70px;
+}
+
+.coinTable th:nth-child(1),
+.coinTable td:nth-child(1),
+.coinTable th:nth-child(2),
+.coinTable td:nth-child(2) {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.coinTable th:nth-child(1),
+.coinTable td:nth-child(1) {
+    padding-left: 70px;
+}
+
+.coinTable th {
+    background-color: orange;
+    color: black;
+    font-weight: 900;
+    height: 100px;
+}
+
+.topRow {
+    background-color: orange;
+}
+
+.coinInfo {
+    display: flex;
+    align-items: center;
+}
+
+.searchBar {
+    width: 40vw;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: rgb(20, 22, 25);
+}
+
+.searchAndSort {
+    width: 70vw;
+    margin-top: 1vw;
+    margin-bottom: 2vw;
+}
+
+.sortSelect {
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+}
