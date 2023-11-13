@@ -1,5 +1,6 @@
 * {
     background-color: rgb(20, 22, 25);
+    box-sizing: border-box;
 }
 
 .intro,
@@ -17,28 +18,54 @@
     color: red;
 }
 
-.coinTable td,
-.coinTable th {
-    padding: 20px 70px;
+.coinTable {
+    width: 80vw;
 }
 
-.coinTable th:nth-child(1),
-.coinTable td:nth-child(1),
-.coinTable th:nth-child(2),
-.coinTable td:nth-child(2) {
-    padding-left: 10px;
-    padding-right: 10px;
+.coinTable th:nth-child(1) {
+    border-radius: 25px 0px 0px 0px;
+}
+
+.coinTable th:nth-child(5) {
+    border-radius: 0px 25px 0px 0px;
 }
 
 .coinTable th:nth-child(1),
 .coinTable td:nth-child(1) {
-    padding-left: 70px;
+    width: 10%;
+    padding-right: 0px;
+}
+
+.coinTable th:nth-child(2),
+.coinTable td:nth-child(2) {
+    width: 20%;
+}
+
+.coinTable th:nth-child(3),
+.coinTable td:nth-child(3) {
+    width: 20%;
+}
+
+.coinTable th:nth-child(4),
+.coinTable td:nth-child(4) {
+    width: 25%;
+}
+
+.coinTable th:nth-child(5),
+.coinTable td:nth-child(5) {
+    width: 25%;
+}
+
+.coinTable td,
+.coinTable th {
+    padding: 1vw 3vw;
 }
 
 .coinTable th {
     background-color: orange;
     color: black;
-    font-weight: 900;
+    font-size: 20px;
+    font-weight: 700;
     height: 100px;
 }
 
@@ -55,12 +82,21 @@
     width: 40vw;
     color: white;
     border: 1px solid white;
-    border-radius: 5px;
+    border-radius: 25px;
     background-color: rgb(20, 22, 25);
 }
 
+.clearIcon {
+    color: white;
+    position: absolute;
+    margin-left: 38vw;
+}
+.clearIcon:hover {
+    cursor: pointer;
+}
+
 .searchAndSort {
-    width: 70vw;
+    width: 80vw;
     margin-top: 1vw;
     margin-bottom: 2vw;
 }
@@ -68,5 +104,8 @@
 .sortSelect {
     color: white;
     border: 1px solid white;
-    border-radius: 5px;
+    border-radius: 25px;
+}
+.sortSelect:hover {
+    cursor: pointer;
 }

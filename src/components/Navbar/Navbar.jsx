@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = ({ masterData, selectedCurrency, setSelectedCurrency }) => {
+const Navbar = ({
+    masterData,
+    selectedCurrency,
+    setSelectedCurrency,
+    isTableDataLoading,
+}) => {
     const [coinList, setCoinList] = useState(null);
     const navigate = useNavigate();
     const setCurrencies = () => {
@@ -14,6 +19,7 @@ const Navbar = ({ masterData, selectedCurrency, setSelectedCurrency }) => {
     useEffect(() => {
         setCurrencies();
     }, [masterData]);
+
     return (
         <>
             <div className="header d-flex justify-content-between align-items-center">
@@ -25,12 +31,16 @@ const Navbar = ({ masterData, selectedCurrency, setSelectedCurrency }) => {
                         setSelectedCurrency(event.target.value)
                     }
                     className="currencySelect d-flex justify-content-center align-items-center"
-                    id="">
-                    {Object.keys(coinList || {}).map((currencyCode) => (
-                        <option value={currencyCode}>
-                            {currencyCode.toUpperCase()}
-                        </option>
-                    ))}
+                    id="currSelect">
+                    {isTableDataLoading ? (
+                        <option value={"CUR"}>CUR</option>
+                    ) : (
+                        Object.keys(coinList || {}).map((currencyCode) => (
+                            <option value={currencyCode}>
+                                {currencyCode.toUpperCase()}
+                            </option>
+                        ))
+                    )}
                 </select>
             </div>
         </>
