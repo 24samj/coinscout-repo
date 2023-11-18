@@ -1,9 +1,11 @@
-# ClientFlow CRM
+# CoinScout
 
-## In the project directory, you can run:
+## Information
 
-### • Three user roles: Admins (system oversight), Hall Owners (manage screenings and theatres), and Users (book tickets and track bookings).
+A simple app that can help you track prices of cryptocurrencies, including the price histories of said currencies.
 
-### • Ensures secure access with AuthN and AuthZ.
+## This project directory features:
 
-### • Backed by MongoDB for the database, with Express handling APIs, and a user-friendly React frontend.
+### • React-based Crypto Asset-Tracking App.
+
+### • Users can search and view crypto coins details, along with price history displayed as a graph for selected time ranges.
