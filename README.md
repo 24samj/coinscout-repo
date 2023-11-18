@@ -2,20 +2,38 @@
 
 ## Information
 
-A simple app that can help you track prices of cryptocurrencies, including the price histories of said currencies.
+CoinScout is a user-friendly application designed to simplify the tracking of cryptocurrency prices, providing users with real-time information and historical data for various digital assets.
 
-## This project features:
+Whether you're a seasoned investor or just curious about the crypto market, CoinScout offers an intuitive React-based Crypto Asset-Tracking experience. Stay informed about the dynamic world of cryptocurrencies through a sleek and responsive interface.
 
-### • React-based Crypto Asset-Tracking App.
+## Key Features
 
-### • Users can search and view crypto coins details, along with price history displayed as a graph for selected time ranges.
+### • **Real-time Price Tracking:**
+
+Keep up with the latest prices of your favorite cryptocurrencies.
+
+### • **Comprehensive Coin Details:**
+
+Users can search and view detailed information about different crypto coins.
+
+### • **Interactive Price History Graphs:**
+
+Explore the price history of selected cryptocurrencies over various time ranges, visualized as informative graphs.
 
 ## Technologies Used
 
-### • **JavaScript (JS):** The core programming language used for implementing the app's logic.
+### • **JavaScript (JS):**
 
-### • **React:** The app is built using the React library, providing a modular and efficient way to create user interfaces.
+The core programming language used for implementing the app's logic.
 
-### • **TypeScript:** TypeScript is employed to enhance the development process by adding static typing to the JavaScript codebase, catching errors early and improving code quality.
+### • **React:**
 
-### • **CSS:** Cascading Style Sheets are used for styling and layout, providing a visually appealing and responsive user interface.
+Built using the React library, CoinScout offers a modular and efficient way to create engaging user interfaces.
+
+### • **TypeScript:**
+
+TypeScript enhances the development process by adding static typing to the JavaScript codebase, catching errors early and improving code quality.
+
+### • **CSS:**
+
+Cascading Style Sheets are used for styling and layout, ensuring a visually appealing and responsive user interface.
