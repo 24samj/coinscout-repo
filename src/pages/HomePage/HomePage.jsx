@@ -104,21 +104,45 @@ const HomePage = ({
                 </div>
             </div>
             <div className="coinTableContainer d-flex justify-content-center">
-                {isTableDataLoading ? (
+                {/* {isTableDataLoading ? (
                     "Loading..."
-                ) : (
-                    <div className="tableContainer">
-                        <table className="coinTable">
-                            <thead>
-                                <tr className="topRow border-bottom">
-                                    <th></th>
-                                    <th className="text-start">Coin</th>
-                                    <th>Price</th>
-                                    <th>24h Change</th>
-                                    <th className="text-end">Market Cap</th>
-                                </tr>
-                            </thead>
+                ) : ( */}
+                <div className="tableContainer">
+                    <table className="coinTable">
+                        <thead>
+                            <tr className="topRow border-bottom">
+                                <th></th>
+                                <th className="text-start">Coin</th>
+                                <th>Price</th>
+                                <th>24h Change</th>
+                                <th className="text-end">Market Cap</th>
+                            </tr>
+                        </thead>
 
+                        {isTableDataLoading ? (
+                            <tbody>
+                                <tr key={"1"} className="border-bottom">
+                                    <td className="logo-col">
+                                        <div className="coinImg"></div>
+                                    </td>
+                                    <td>
+                                        <div className="coinInfo d-flex">
+                                            <div className="basicInfo">
+                                                <div className="symbol d-flex">
+                                                    {""}
+                                                </div>
+                                                <div className="name">
+                                                    {"Loading..."}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{"Loading..."}</td>
+                                    <td className={"text"}>{"Loading..."}</td>
+                                    <td className="text-end">{"Loading..."}</td>
+                                </tr>
+                            </tbody>
+                        ) : (
                             <tbody>
                                 {filteredData &&
                                     filteredData.map((coin) => (
@@ -181,9 +205,10 @@ const HomePage = ({
                                         </tr>
                                     ))}
                             </tbody>
-                        </table>
-                    </div>
-                )}
+                        )}
+                    </table>
+                </div>
+                {/* )} */}
             </div>
         </>
     );
