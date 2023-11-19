@@ -1,17 +1,36 @@
+.loadingContainer {
+    font-size: 48px;
+    height: calc(100vh - 40px);
+    color: white;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.coinDataLoading,
+.priceDataLoading {
+    font-size: 36px;
+    height: calc(100vh - 40px);
+    color: white;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
 .coinData,
 .chartData {
-  height: calc(100vh - 40px);
-  background: rgb(20, 22, 25);
+    height: calc(100vh - 40px);
+    background: rgb(20, 22, 25);
 }
 
 .coinData {
-  width: 30vw;
-  border-right: 1px solid grey;
+    width: 30vw;
+    border-right: 1px solid grey;
 }
 
 .chartData {
-  width: calc(70vw - 40px);
-  margin: auto;
+    width: calc(70vw - 40px);
+    margin: auto;
 }
 
 .coinName,
@@ -19,31 +38,31 @@
 .coinRank,
 .coinPrice,
 .coinCap {
-  color: white;
+    color: white;
 }
 
 .coinName {
-  font-weight: 900;
-  font-size: 32px;
+    font-weight: 900;
+    font-size: 32px;
 }
 
 .coinInfo {
-  text-align: left;
+    text-align: left;
 }
 
 .chart-buttons {
-  gap: 1vw;
+    gap: 1vw;
 }
 
 .time-button {
-  color: white;
-  background-color: rgb(20, 22, 25);
-  width: 16vw;
-  border: 1px solid orange;
-  border-radius: 5px;
+    color: white;
+    background-color: rgb(20, 22, 25);
+    width: 16vw;
+    border: 1px solid orange;
+    border-radius: 5px;
 }
 
 .active-time-button {
-  color: black;
-  background-color: orange;
+    color: black;
+    background-color: orange;
 }
