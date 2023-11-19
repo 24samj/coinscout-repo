@@ -83,14 +83,17 @@
     color: white;
     border: 1px solid white;
     border-radius: 25px;
-    background-color: rgb(20, 22, 25);
+    background-color: rgb(0, 0, 0);
 }
 
-.clearIcon {
-    color: white;
-    position: absolute;
-    margin-left: 38vw;
+.clearBtn {
+    border-radius: 0px 25px 25px 0px !important;
 }
+
+/* .clearIcon {
+    color: white;
+    margin-left: 38vw;
+} */
 .clearIcon:hover {
     cursor: pointer;
 }

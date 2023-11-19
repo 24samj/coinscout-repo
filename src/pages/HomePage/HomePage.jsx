@@ -60,25 +60,30 @@ const HomePage = ({
             </h1>
             <div className="d-flex justify-content-center">
                 <div className="searchAndSort d-flex justify-content-between align-items-center">
-                    <input
-                        className="searchBar p-2"
-                        type="text"
-                        placeholder="Search by coin name"
-                        value={searchQuery}
-                        onChange={(event) => setSearchQuery(event.target.value)}
-                    />
-                    {searchQuery && (
-                        <svg
-                            onClick={() => setSearchQuery("")}
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="clearIcon bi bi-x-lg"
-                            viewBox="0 0 16 16">
-                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                        </svg>
-                    )}
+                    <div class="input-group">
+                        <input
+                            className="searchBar p-2"
+                            type="text"
+                            class="form-control"
+                            placeholder="Search by coin name"
+                            aria-label="Search by coin name"
+                            aria-describedby="button-addon2"
+                            value={searchQuery}
+                            onChange={(event) =>
+                                setSearchQuery(event.target.value)
+                            }
+                        />
+                        {searchQuery && (
+                            <button
+                                class="clearBtn btn btn-outline-secondary"
+                                type="button"
+                                id="button-addon2"
+                                onClick={() => setSearchQuery("")}>
+                                X
+                            </button>
+                        )}
+                    </div>
+
                     <select
                         className="sortSelect p-2"
                         name="sort"
