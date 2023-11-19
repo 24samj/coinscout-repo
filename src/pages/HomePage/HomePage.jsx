@@ -60,11 +60,16 @@ const HomePage = ({
             </h1>
             <div className="d-flex justify-content-center">
                 <div className="searchAndSort d-flex justify-content-between align-items-center">
-                    <div class="input-group">
+                    <div class="input-group w-50">
                         <input
-                            className="searchBar p-2"
+                            style={
+                                searchQuery
+                                    ? { borderRadius: "25px 0px 0px 25px" }
+                                    : { borderRadius: "25px 25px 25px 25px" }
+                            }
+                            className="searchBar p-2 form-control"
                             type="text"
-                            class="form-control"
+                            // class="form-control"
                             placeholder="Search by coin name"
                             aria-label="Search by coin name"
                             aria-describedby="button-addon2"
