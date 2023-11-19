@@ -107,77 +107,82 @@ const HomePage = ({
                 {isTableDataLoading ? (
                     "Loading..."
                 ) : (
-                    <table className="coinTable">
-                        <thead>
-                            <tr className="topRow border-bottom">
-                                <th></th>
-                                <th className="text-start">Coin</th>
-                                <th>Price</th>
-                                <th>24h Change</th>
-                                <th className="text-end">Market Cap</th>
-                            </tr>
-                        </thead>
+                    <div className="tableContainer">
+                        <table className="coinTable">
+                            <thead>
+                                <tr className="topRow border-bottom">
+                                    <th></th>
+                                    <th className="text-start">Coin</th>
+                                    <th>Price</th>
+                                    <th>24h Change</th>
+                                    <th className="text-end">Market Cap</th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                            {filteredData &&
-                                filteredData.map((coin) => (
-                                    <tr
-                                        key={coin.id}
-                                        className="border-bottom"
-                                        onClick={() => navigate(`/${coin.id}`)}>
-                                        <td className="logo-col">
-                                            <div className="coinImg">
-                                                <img
-                                                    src={coin.image.small}
-                                                    alt="Coin Image"
-                                                />
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div className="coinInfo d-flex">
-                                                <div className="basicInfo">
-                                                    <div className="symbol d-flex">
-                                                        {coin.symbol.toUpperCase()}
-                                                    </div>
-                                                    <div className="name">
-                                                        {coin.name}
+                            <tbody>
+                                {filteredData &&
+                                    filteredData.map((coin) => (
+                                        <tr
+                                            key={coin.id}
+                                            className="border-bottom"
+                                            onClick={() =>
+                                                navigate(`/${coin.id}`)
+                                            }>
+                                            <td className="logo-col">
+                                                <div className="coinImg">
+                                                    <img
+                                                        src={coin.image.small}
+                                                        alt="Coin Image"
+                                                    />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div className="coinInfo d-flex">
+                                                    <div className="basicInfo">
+                                                        <div className="symbol d-flex">
+                                                            {coin.symbol.toUpperCase()}
+                                                        </div>
+                                                        <div className="name">
+                                                            {coin.name}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            {selectedCurrency.toUpperCase()}{" "}
-                                            {
-                                                coin.market_data.current_price[
-                                                    selectedCurrency
-                                                ]
-                                            }
-                                        </td>
-                                        <td
-                                            className={`${
-                                                coin.market_data
-                                                    .price_change_percentage_24h >=
-                                                0
-                                                    ? "positive"
-                                                    : "negative"
-                                            }`}>
-                                            {coin.market_data.price_change_percentage_24h.toFixed(
-                                                2
-                                            )}
-                                            %
-                                        </td>
-                                        <td className="text-end">
-                                            {selectedCurrency.toUpperCase()}{" "}
-                                            {
-                                                coin.market_data.market_cap[
-                                                    selectedCurrency
-                                                ]
-                                            }
-                                        </td>
-                                    </tr>
-                                ))}
-                        </tbody>
-                    </table>
+                                            </td>
+                                            <td>
+                                                {selectedCurrency.toUpperCase()}{" "}
+                                                {
+                                                    coin.market_data
+                                                        .current_price[
+                                                        selectedCurrency
+                                                    ]
+                                                }
+                                            </td>
+                                            <td
+                                                className={`${
+                                                    coin.market_data
+                                                        .price_change_percentage_24h >=
+                                                    0
+                                                        ? "positive"
+                                                        : "negative"
+                                                }`}>
+                                                {coin.market_data.price_change_percentage_24h.toFixed(
+                                                    2
+                                                )}
+                                                %
+                                            </td>
+                                            <td className="text-end">
+                                                {selectedCurrency.toUpperCase()}{" "}
+                                                {
+                                                    coin.market_data.market_cap[
+                                                        selectedCurrency
+                                                    ]
+                                                }
+                                            </td>
+                                        </tr>
+                                    ))}
+                            </tbody>
+                        </table>
+                    </div>
                 )}
             </div>
         </>
