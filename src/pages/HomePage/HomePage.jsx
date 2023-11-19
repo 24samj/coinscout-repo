@@ -79,7 +79,7 @@ const HomePage = ({
                                 type="button"
                                 id="button-addon2"
                                 onClick={() => setSearchQuery("")}>
-                                X
+                                ❌
                             </button>
                         )}
                     </div>
