@@ -62,7 +62,7 @@ const HomePage = ({
                 <div className="searchAndSort d-flex justify-content-between align-items-center">
                     <div class="input-group">
                         <input
-                            className="searchBar w-50 p-2"
+                            className="searchBar p-2"
                             type="text"
                             class="form-control"
                             placeholder="Search by coin name"
