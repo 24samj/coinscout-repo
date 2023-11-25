@@ -6,6 +6,16 @@ CoinScout is a user-friendly application designed to simplify the tracking of cr
 
 Whether you're a seasoned investor or just curious about the crypto market, CoinScout offers an intuitive React-based Crypto Asset-Tracking experience. Stay informed about the dynamic world of cryptocurrencies through a sleek and responsive interface.
 
+## Instructions to Run the App
+
+After cloning, run
+
+### `npm install`
+
+After installation of node_modules, run
+
+### `npm start`
+
 ## Key Features
 
 ### • **Real-time Price Tracking:**
