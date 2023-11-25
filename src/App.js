@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import CoinDetails from "./pages/CoinDetails/CoinDetails.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import axios from "axios";
@@ -8,6 +8,25 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar.jsx";
 
 export default function App() {
+    const location = useLocation();
+
+    useEffect(() => {
+        const pageTitle = getPageTitle(location.pathname);
+        document.title = `CoinScout | ${
+            location.pathname === "/" ? "Homepage" : pageTitle + " Details"
+        }`;
+    }, [location.pathname]);
+
+    const getPageTitle = (pathname) => {
+        const parts = pathname.split("/");
+        const lastPart = parts[parts.length - 1];
+
+        const capitalizedLastPart =
+            lastPart.charAt(0).toUpperCase() + lastPart.slice(1);
+
+        return capitalizedLastPart;
+    };
+
     const [selectedCurrency, setSelectedCurrency] = useState("aed");
     const [masterData, setMasterData] = useState(null);
     const [isTableDataLoading, setIsTableDataLoading] = useState(false);

@@ -103,6 +103,12 @@
     border: 1px solid white !important;
     background-color: rgb(17, 18, 20) !important;
 }
+.searchBar:focus {
+    box-shadow: none !important;
+}
+.searchBar::placeholder {
+    color: rgb(96, 96, 96) !important;
+}
 
 .clearBtn {
     border-radius: 0px 25px 25px 0px !important;

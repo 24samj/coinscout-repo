@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import "./CoinDetails.css";
 import {
@@ -132,7 +132,7 @@ const CoinDetails = ({ selectedCurrency, setSelectedCurrency }) => {
             ) : (
                 <div className="coinDetailsContainer d-flex">
                     <div className="coinData p-3">
-                        <div className="coinImg mt-5">
+                        <div className="coinImg">
                             <img src={coinData?.image?.large} alt="" />
                         </div>
                         <div className="coinName mt-3">{coinData?.name}</div>
