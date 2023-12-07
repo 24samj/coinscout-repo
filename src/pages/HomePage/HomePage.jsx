@@ -53,7 +53,7 @@ const HomePage = ({ masterData, selectedCurrency, isTableDataLoading }) => {
             </h1>
             <div className="d-flex justify-content-center">
                 <div className="searchAndSort d-flex justify-content-between align-items-center">
-                    <div class="input-group w-50">
+                    <div className="input-group w-50">
                         <input
                             style={
                                 searchQuery
@@ -62,7 +62,7 @@ const HomePage = ({ masterData, selectedCurrency, isTableDataLoading }) => {
                             }
                             className="searchBar p-2 form-control"
                             type="text"
-                            // class="form-control"
+                            // className="form-control"
                             placeholder="Search by coin name"
                             aria-label="Search by coin name"
                             aria-describedby="button-addon2"
@@ -73,7 +73,7 @@ const HomePage = ({ masterData, selectedCurrency, isTableDataLoading }) => {
                         />
                         {searchQuery && (
                             <button
-                                class="clearBtn btn btn-outline-secondary"
+                                className="clearBtn btn btn-outline-secondary"
                                 type="button"
                                 id="button-addon2"
                                 onClick={() => setSearchQuery("")}>
