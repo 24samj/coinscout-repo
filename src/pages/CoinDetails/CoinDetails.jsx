@@ -1,8 +1,6 @@
-// CoinDetails.js
-
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import "./CoinDetails.css";
 import {
@@ -26,7 +24,7 @@ ChartJS.register(
     Legend
 );
 
-const CoinDetails = ({ selectedCurrency, setSelectedCurrency }) => {
+const CoinDetails = ({ selectedCurrency }) => {
     const { coinId } = useParams();
     const [coinData, setCoinData] = useState(null);
     const [prices, setPrices] = useState(null);

@@ -2,12 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = ({
-    masterData,
-    selectedCurrency,
-    setSelectedCurrency,
-    isTableDataLoading,
-}) => {
+const Navbar = ({ masterData, setSelectedCurrency, isTableDataLoading }) => {
     const [coinList, setCoinList] = useState(null);
     const navigate = useNavigate();
     const setCurrencies = () => {

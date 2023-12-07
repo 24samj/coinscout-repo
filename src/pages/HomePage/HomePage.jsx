@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Navbar from "../../components/Navbar/Navbar.jsx";
+import { useState } from "react";
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
 
-const HomePage = ({
-    masterData,
-    selectedCurrency,
-    setSelectedCurrency,
-    isTableDataLoading,
-}) => {
+const HomePage = ({ masterData, selectedCurrency, isTableDataLoading }) => {
     const [searchQuery, setSearchQuery] = useState("");
     const [sortOption, setSortOption] = useState("Rank");
 
@@ -156,7 +149,7 @@ const HomePage = ({
                                                 <div className="coinImg">
                                                     <img
                                                         src={coin.image.small}
-                                                        alt="Coin Image"
+                                                        alt="imageOfCoin"
                                                     />
                                                 </div>
                                             </td>
