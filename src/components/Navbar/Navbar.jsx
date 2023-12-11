@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 import "./Navbar.css";
 
 const Navbar = ({ masterData, setSelectedCurrency, isTableDataLoading }) => {
     const [coinList, setCoinList] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
     const setCurrencies = () => {
         if (masterData && masterData.length > 0) {
             const currObj = masterData[0].market_data.current_price;
@@ -18,9 +20,30 @@ const Navbar = ({ masterData, setSelectedCurrency, isTableDataLoading }) => {
     return (
         <>
             <div className="header d-flex justify-content-between align-items-center">
-                <div onClick={() => navigate("/")} className="siteText">
-                    CoinScout
+                <div className="logo-back-container d-flex justify-content-center align-items-center">
+                    {location.pathname !== "/" && (
+                        <>
+                            <div
+                                className="back-btn"
+                                onClick={() => navigate("/")}
+                                data-tooltip-id="back-tooltip"
+                                data-tooltip-content="Go Back">
+                                ←
+                            </div>
+                            <Tooltip id="back-tooltip" />
+                        </>
+                    )}
+                    <div
+                        className="siteText"
+                        style={
+                            location.pathname !== "/"
+                                ? { marginLeft: "1vw" }
+                                : { marginLeft: "12.5vw" }
+                        }>
+                        CoinScout
+                    </div>
                 </div>
+
                 <select
                     onChange={(event) =>
                         setSelectedCurrency(event.target.value)

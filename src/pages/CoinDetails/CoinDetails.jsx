@@ -1,8 +1,10 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Line } from "react-chartjs-2";
+import { Tooltip as PriceTooltip } from "react-tooltip";
+import axios from "axios";
 import "./CoinDetails.css";
+
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -93,33 +95,15 @@ const CoinDetails = ({ selectedCurrency }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setIsCoinDataLoading(true);
                 await fetchCoinData();
-                fetchPrices(activeTimeRange);
+                await fetchPrices(activeTimeRange);
             } catch (ex) {
                 console.log(ex);
-            } finally {
-                setIsCoinDataLoading(false);
             }
         };
 
         fetchData();
     }, [coinId, activeTimeRange, selectedCurrency]);
-
-    useEffect(() => {
-        const fetchPriceData = async () => {
-            try {
-                setIsPriceDataLoading(true);
-                fetchPrices(activeTimeRange);
-            } catch (ex) {
-                console.log(ex);
-            } finally {
-                setIsPriceDataLoading(false);
-            }
-        };
-
-        fetchPriceData();
-    }, [activeTimeRange]);
 
     return (
         <>
@@ -135,7 +119,7 @@ const CoinDetails = ({ selectedCurrency }) => {
                         </div>
                         <div className="coinName mt-3">{coinData?.name}</div>
                         <div className="coinInfo p-1 mt-2">
-                            {coinData?.description.en.split(".")[0] + "."}
+                            {coinData?.description.en.split(". ")[0] + "."}
                         </div>
 
                         <div className="coinRank p-1 mt-3 d-flex justify-content-between">
@@ -145,24 +129,42 @@ const CoinDetails = ({ selectedCurrency }) => {
                         <div className="coinPrice p-1 mt-1 d-flex justify-content-between">
                             <strong>Current Price:</strong>
                             <div>
-                                {selectedCurrency.toUpperCase()}{" "}
-                                {
+                                {Intl.NumberFormat("en-IN", {
+                                    style: "currency",
+                                    currency: selectedCurrency,
+                                }).format(
                                     coinData?.market_data.current_price[
                                         selectedCurrency
                                     ]
-                                }
+                                )}
                             </div>
                         </div>
                         <div className="coinCap p-1 mt-1 d-flex justify-content-between">
                             <strong>Market Cap:</strong>
-                            <div>
-                                {selectedCurrency.toUpperCase()}{" "}
-                                {
+                            <div
+                                data-tooltip-id="price-tooltip"
+                                data-tooltip-content={Intl.NumberFormat(
+                                    "en-IN",
+                                    {
+                                        style: "currency",
+                                        currency: selectedCurrency,
+                                    }
+                                ).format(
                                     coinData?.market_data.market_cap[
                                         selectedCurrency
                                     ]
-                                }
+                                )}>
+                                {Intl.NumberFormat("en-IN", {
+                                    style: "currency",
+                                    currency: selectedCurrency,
+                                    notation: "compact",
+                                }).format(
+                                    coinData?.market_data.market_cap[
+                                        selectedCurrency
+                                    ]
+                                )}
                             </div>
+                            <PriceTooltip id="price-tooltip" place="bottom" />
                         </div>
                     </div>
 
@@ -179,12 +181,12 @@ const CoinDetails = ({ selectedCurrency }) => {
                                     </div>
                                 )}
 
-                                <div className="chart-buttons d-flex justify-content-center">
+                                <div className="chart-buttons d-flex justify-content-center my-2">
                                     <button
-                                        className={`24h-time-button time-button ${
+                                        className={`${
                                             activeTimeRange === "1d"
                                                 ? "active-time-button"
-                                                : ""
+                                                : "time-button"
                                         }`}
                                         onClick={() =>
                                             setActiveTimeRange("1d")
@@ -192,10 +194,10 @@ const CoinDetails = ({ selectedCurrency }) => {
                                         24 Hours
                                     </button>
                                     <button
-                                        className={`30d-time-button time-button ${
+                                        className={`${
                                             activeTimeRange === "30d"
                                                 ? "active-time-button"
-                                                : ""
+                                                : "time-button"
                                         }`}
                                         onClick={() =>
                                             setActiveTimeRange("30d")
@@ -203,10 +205,10 @@ const CoinDetails = ({ selectedCurrency }) => {
                                         30 Days
                                     </button>
                                     <button
-                                        className={`3m-time-button time-button ${
+                                        className={`${
                                             activeTimeRange === "90d"
                                                 ? "active-time-button"
-                                                : ""
+                                                : "time-button"
                                         }`}
                                         onClick={() =>
                                             setActiveTimeRange("90d")
@@ -215,10 +217,10 @@ const CoinDetails = ({ selectedCurrency }) => {
                                     </button>
 
                                     <button
-                                        className={`1y-time-button time-button ${
+                                        className={`${
                                             activeTimeRange === "365d"
                                                 ? "active-time-button"
-                                                : ""
+                                                : "time-button"
                                         }`}
                                         onClick={() =>
                                             setActiveTimeRange("365d")

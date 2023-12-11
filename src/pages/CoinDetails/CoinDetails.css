@@ -20,7 +20,6 @@
 .coinData,
 .chartData {
     height: calc(100vh - 40px);
-    background: rgb(20, 22, 25);
 }
 
 .coinData {
@@ -54,12 +53,17 @@
     gap: 1vw;
 }
 
-.time-button {
+.time-button,
+.active-time-button {
     color: white;
     background-color: rgb(20, 22, 25);
     width: 16vw;
     border: 1px solid orange;
-    border-radius: 5px;
+    border-radius: 10px;
+    transition: 0.5s all;
+}
+.time-button:hover {
+    background-color: rgba(255, 166, 0, 0.1);
 }
 
 .active-time-button {

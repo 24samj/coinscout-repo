@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
+import "./HomePage.css";
 
 const HomePage = ({ masterData, selectedCurrency, isTableDataLoading }) => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -57,8 +57,8 @@ const HomePage = ({ masterData, selectedCurrency, isTableDataLoading }) => {
                         <input
                             style={
                                 searchQuery
-                                    ? { borderRadius: "25px 0px 0px 25px" }
-                                    : { borderRadius: "25px 25px 25px 25px" }
+                                    ? { borderRadius: "15px 0px 0px 15px" }
+                                    : { borderRadius: "15px 15px 15px 15px" }
                             }
                             className="searchBar p-2 form-control"
                             type="text"
@@ -166,13 +166,15 @@ const HomePage = ({ masterData, selectedCurrency, isTableDataLoading }) => {
                                                 </div>
                                             </td>
                                             <td>
-                                                {selectedCurrency.toUpperCase()}{" "}
-                                                {
+                                                {Intl.NumberFormat("en-IN", {
+                                                    style: "currency",
+                                                    currency: selectedCurrency,
+                                                }).format(
                                                     coin.market_data
                                                         .current_price[
                                                         selectedCurrency
                                                     ]
-                                                }
+                                                )}
                                             </td>
                                             <td
                                                 className={`${
@@ -188,12 +190,14 @@ const HomePage = ({ masterData, selectedCurrency, isTableDataLoading }) => {
                                                 %
                                             </td>
                                             <td className="text-end">
-                                                {selectedCurrency.toUpperCase()}{" "}
-                                                {
+                                                {Intl.NumberFormat("en-IN", {
+                                                    style: "currency",
+                                                    currency: selectedCurrency,
+                                                }).format(
                                                     coin.market_data.market_cap[
                                                         selectedCurrency
                                                     ]
-                                                }
+                                                )}
                                             </td>
                                         </tr>
                                     ))}
