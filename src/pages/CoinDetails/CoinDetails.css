@@ -25,6 +25,7 @@
 .coinData {
     width: 30vw;
     border-right: 1px solid grey;
+    overflow: auto;
 }
 
 .chartData {

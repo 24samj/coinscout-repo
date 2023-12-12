@@ -27,7 +27,7 @@ export default function App() {
         return capitalizedLastPart;
     };
 
-    const [selectedCurrency, setSelectedCurrency] = useState("aed");
+    const [selectedCurrency, setSelectedCurrency] = useState("inr");
     const [masterData, setMasterData] = useState(null);
     const [isTableDataLoading, setIsTableDataLoading] = useState(false);
 
@@ -38,7 +38,6 @@ export default function App() {
                 `https://api.coingecko.com/api/v3/coins/`
             );
             setMasterData(data);
-            console.log(data);
         } catch (ex) {
             console.log(ex);
         }

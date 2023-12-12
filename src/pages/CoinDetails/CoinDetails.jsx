@@ -64,45 +64,38 @@ const CoinDetails = ({ selectedCurrency }) => {
         };
     }
 
-    const fetchCoinData = async () => {
-        try {
-            setIsCoinDataLoading(true);
-            const { data } = await axios.get(
-                `https://api.coingecko.com/api/v3/coins/${coinId}`
-            );
-            setCoinData(data);
-        } catch (ex) {
-            console.log(ex);
-        } finally {
-            setIsCoinDataLoading(false);
-        }
-    };
-
-    const fetchPrices = async (timeRange) => {
-        try {
-            setIsPriceDataLoading(true);
-            const { data } = await axios.get(
-                `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${selectedCurrency}&days=${timeRange}`
-            );
-            setPrices(data.prices);
-        } catch (ex) {
-            console.log(ex);
-        } finally {
-            setIsPriceDataLoading(false);
-        }
-    };
-
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchPrices = async () => {
             try {
-                await fetchCoinData();
-                await fetchPrices(activeTimeRange);
+                setIsPriceDataLoading(true);
+                const { data } = await axios.get(
+                    `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${selectedCurrency}&days=${activeTimeRange}`
+                );
+                setPrices(data.prices);
             } catch (ex) {
                 console.log(ex);
+            } finally {
+                setIsPriceDataLoading(false);
             }
         };
 
-        fetchData();
+        const fetchCoinData = async () => {
+            try {
+                setIsCoinDataLoading(true);
+                const { data } = await axios.get(
+                    `https://api.coingecko.com/api/v3/coins/${coinId}`
+                );
+                setCoinData(data);
+            } catch (ex) {
+                console.log(ex);
+            } finally {
+                setIsCoinDataLoading(false);
+            }
+        };
+
+        // Call the functions
+        fetchCoinData();
+        fetchPrices();
     }, [coinId, activeTimeRange, selectedCurrency]);
 
     return (

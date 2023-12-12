@@ -3,17 +3,23 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import "./Navbar.css";
 
-const Navbar = ({ masterData, setSelectedCurrency, isTableDataLoading }) => {
+const Navbar = ({
+    masterData,
+    selectedCurrency,
+    setSelectedCurrency,
+    isTableDataLoading,
+}) => {
     const [coinList, setCoinList] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
-    const setCurrencies = () => {
-        if (masterData && masterData.length > 0) {
-            const currObj = masterData[0].market_data.current_price;
-            setCoinList(currObj);
-        }
-    };
     useEffect(() => {
+        const setCurrencies = () => {
+            if (masterData && masterData.length > 0) {
+                const currObj = masterData[0].market_data.current_price;
+                setCoinList(currObj);
+            }
+        };
+
         setCurrencies();
     }, [masterData]);
 
@@ -45,6 +51,7 @@ const Navbar = ({ masterData, setSelectedCurrency, isTableDataLoading }) => {
                 </div>
 
                 <select
+                    value={selectedCurrency}
                     onChange={(event) =>
                         setSelectedCurrency(event.target.value)
                     }
@@ -54,7 +61,7 @@ const Navbar = ({ masterData, setSelectedCurrency, isTableDataLoading }) => {
                         <option value={"CUR"}>CUR</option>
                     ) : (
                         Object.keys(coinList || {}).map((currencyCode) => (
-                            <option value={currencyCode}>
+                            <option key={currencyCode} value={currencyCode}>
                                 {currencyCode.toUpperCase()}
                             </option>
                         ))
