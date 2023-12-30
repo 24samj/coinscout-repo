@@ -27,20 +27,14 @@ const HomePage = ({ masterData, selectedCurrency, isTableDataLoading }) => {
                     case "Name":
                         return a.name.localeCompare(b.name);
                     case "Price":
-                        return (
-                            b.market_data.current_price[selectedCurrency] -
-                            a.market_data.current_price[selectedCurrency]
-                        );
+                        return b.current_price - a.current_price;
                     case "24h Change":
                         return (
-                            b.market_data.price_change_percentage_24h -
-                            a.market_data.price_change_percentage_24h
+                            b.price_change_percentage_24h -
+                            a.price_change_percentage_24h
                         );
                     case "Market Cap":
-                        return (
-                            b.market_data.market_cap[selectedCurrency] -
-                            a.market_data.market_cap[selectedCurrency]
-                        );
+                        return b.market_cap - a.market_cap;
                     default:
                         return 0;
                 }
@@ -148,8 +142,9 @@ const HomePage = ({ masterData, selectedCurrency, isTableDataLoading }) => {
                                             <td className="logo-col">
                                                 <div className="coinImg">
                                                     <img
-                                                        src={coin.image.small}
+                                                        src={coin.image}
                                                         alt="imageOfCoin"
+                                                        width={"100%"}
                                                     />
                                                 </div>
                                             </td>
@@ -169,22 +164,16 @@ const HomePage = ({ masterData, selectedCurrency, isTableDataLoading }) => {
                                                 {Intl.NumberFormat("en-IN", {
                                                     style: "currency",
                                                     currency: selectedCurrency,
-                                                }).format(
-                                                    coin.market_data
-                                                        .current_price[
-                                                        selectedCurrency
-                                                    ]
-                                                )}
+                                                }).format(coin.current_price)}
                                             </td>
                                             <td
                                                 className={`${
-                                                    coin.market_data
-                                                        .price_change_percentage_24h >=
+                                                    coin.price_change_percentage_24h >=
                                                     0
                                                         ? "positive"
                                                         : "negative"
                                                 }`}>
-                                                {coin.market_data.price_change_percentage_24h.toFixed(
+                                                {coin.price_change_percentage_24h.toFixed(
                                                     2
                                                 )}
                                                 %
@@ -193,11 +182,7 @@ const HomePage = ({ masterData, selectedCurrency, isTableDataLoading }) => {
                                                 {Intl.NumberFormat("en-IN", {
                                                     style: "currency",
                                                     currency: selectedCurrency,
-                                                }).format(
-                                                    coin.market_data.market_cap[
-                                                        selectedCurrency
-                                                    ]
-                                                )}
+                                                }).format(coin.market_cap)}
                                             </td>
                                         </tr>
                                     ))}

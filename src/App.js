@@ -28,30 +28,47 @@ export default function App() {
     };
 
     const [selectedCurrency, setSelectedCurrency] = useState("inr");
+    const [currencyList, setCurrencyList] = useState({});
     const [masterData, setMasterData] = useState(null);
     const [isTableDataLoading, setIsTableDataLoading] = useState(false);
 
-    const retrieveCoinData = async () => {
+    useEffect(() => {
+        const retrieveCoinData = async () => {
+            try {
+                setIsTableDataLoading(true);
+                const { data } = await axios.get(
+                    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${selectedCurrency}`
+                );
+                setMasterData(data);
+            } catch (ex) {
+                console.log("Master data could not be retrieved: ", ex);
+            } finally {
+                setIsTableDataLoading(false);
+            }
+        };
+
+        retrieveCoinData();
+    }, [selectedCurrency]);
+
+    const retrieveCurrencyList = async () => {
         try {
-            setIsTableDataLoading(true);
             const { data } = await axios.get(
-                `https://api.coingecko.com/api/v3/coins/`
+                "https://api.coingecko.com/api/v3/coins/bitcoin"
             );
-            setMasterData(data);
+            setCurrencyList(data.market_data.current_price);
         } catch (ex) {
-            console.log(ex);
+            console.log("Currency list could not be retrieved: ", ex);
         }
-        setIsTableDataLoading(false);
     };
 
     useEffect(() => {
-        retrieveCoinData();
+        retrieveCurrencyList();
     }, []);
 
     return (
         <div className="App">
             <Navbar
-                masterData={masterData}
+                currencyList={currencyList}
                 selectedCurrency={selectedCurrency}
                 setSelectedCurrency={setSelectedCurrency}
                 isTableDataLoading={isTableDataLoading}

@@ -125,6 +125,7 @@ body {
 
 .sortSelect {
     color: white;
+    background-color: rgb(20, 22, 25);
     border: 1px solid white;
     border-radius: 15px;
 }

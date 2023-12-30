@@ -69,7 +69,7 @@ const CoinDetails = ({ selectedCurrency }) => {
             try {
                 setIsPriceDataLoading(true);
                 const { data } = await axios.get(
-                    `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${selectedCurrency}&days=${activeTimeRange}`
+                    `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=inr&days=${activeTimeRange}`
                 );
                 setPrices(data.prices);
             } catch (ex) {
