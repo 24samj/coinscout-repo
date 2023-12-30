@@ -46,15 +46,17 @@ const Navbar = ({
                     className="currencySelect d-flex justify-content-center align-items-center"
                     id="currSelect">
                     {isTableDataLoading ? (
-                        <option value={"CUR"}>CUR</option>
+                        <option value={selectedCurrency}>
+                            {selectedCurrency.toUpperCase()}
+                        </option>
                     ) : (
-                        Object.keys(currencyList || { CUR: "1" }).map(
-                            (currencyCode) => (
-                                <option key={currencyCode} value={currencyCode}>
-                                    {currencyCode.toUpperCase()}
-                                </option>
-                            )
-                        )
+                        Object.keys(
+                            currencyList || { selectedCurrency: "1" }
+                        ).map((currencyCode) => (
+                            <option key={currencyCode} value={currencyCode}>
+                                {currencyCode.toUpperCase()}
+                            </option>
+                        ))
                     )}
                 </select>
             </div>
